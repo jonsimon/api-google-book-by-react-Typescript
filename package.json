@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "npm start",
-    "cy:open": "npm start & cypress open"
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
