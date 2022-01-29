@@ -23,6 +23,10 @@
     "dev": "npm start",
     "cy:open": "cypress open"
   },
+  "nyc": {
+    "exclude": "src/serviceWorker.ts",
+    "excludeAfterRemap": true
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -39,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.9.12",
     "@cypress/instrument-cra": "^1.4.0",
     "css-loader": "^6.5.1",
     "cypress": "^9.3.1",
