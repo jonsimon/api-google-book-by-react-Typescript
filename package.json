@@ -10,7 +10,6 @@
     "@types/node": "^12.12.53",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
-    "cypress": "^9.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^5.0.0",
@@ -39,6 +38,7 @@
   },
   "devDependencies": {
     "css-loader": "^6.5.1",
+    "cypress": "^9.3.1",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^7.0.1",
     "sass-loader": "^12.4.0",
