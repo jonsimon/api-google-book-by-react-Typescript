@@ -9,7 +9,11 @@
     "eject": "react-scripts eject",
     "dev": "npm start",
     "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "precoverage:merge": "cpy --cwd=coverage jest/coverage-final.json . --rename jest.json && cpy --cwd=coverage cypress/coverage-final.json . --rename=cypress.json",
+    "coverage:merge": "nyc merge coverage .nyc_output/out.json",
+    "postcoverage:merge": "nyc report --reporter text --reporter text-summary --reporter json --reporter lcov --report-dir ./coverage/combined",
+    "coverage:check": "nyc check-coverage --lines 85 --branches 85 --statements 85 --functions 85"
   },
   "nyc": {
     "exclude": "src/serviceWorker.ts",
@@ -54,6 +58,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.12",
     "@cypress/instrument-cra": "^1.4.0",
+    "cpy-cli": "^3.1.1",
     "css-loader": "^6.5.1",
     "cypress": "^9.3.1",
     "mini-css-extract-plugin": "^0.9.0",
