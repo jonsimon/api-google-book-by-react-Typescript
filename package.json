@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll --coverage --coverageDirectory ./coverage/jest",
     "eject": "react-scripts eject",
     "dev": "npm start",
     "cy:open": "cypress open",
@@ -15,6 +15,13 @@
     "exclude": "src/serviceWorker.ts",
     "excludeAfterRemap": true,
     "report-dir": "./coverage/cypress"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/serviceWorker.ts"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
