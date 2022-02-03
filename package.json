@@ -7,9 +7,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll --coverage --coverageDirectory ./coverage/jest",
     "eject": "react-scripts eject",
-    "dev": "npm start",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "start-test": "start-server-and-test start 3000 cy:run",
     "precoverage:merge": "cpy --cwd=coverage jest/coverage-final.json . --rename jest.json && cpy --cwd=coverage cypress/coverage-final.json . --rename=cypress.json",
     "coverage:merge": "nyc merge coverage .nyc_output/out.json",
     "postcoverage:merge": "nyc report --reporter text --reporter text-summary --reporter json --reporter lcov --report-dir ./coverage/combined",
@@ -64,6 +64,7 @@
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^7.0.1",
     "sass-loader": "^12.4.0",
+    "start-server-and-test": "^1.14.0",
     "style-loader": "^1.2.1"
   }
 }
