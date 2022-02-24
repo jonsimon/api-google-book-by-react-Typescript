@@ -1,10 +1,18 @@
 # Stop Writing React Unit Tests
 
-Unit tests.  Love them.  Hate them.  But you can't get rid of them.
+If you are a developer on a React project, I have big news for you:  you can stop writing unit tests.
 
-But I am here to tell you: you can get rid of them!  
+We actually did this on my project and I want to tell you how we did it.
 
-In this article, I will tell you how.
+## Background
+
+To understand the journey that we took to Stop Writing Unit Tests, I want to give some background on the project where we stopped writing unit tests.
+
+The project is written in React based on [create-react-app](https://create-react-app.dev). It uses [Jest](https://jestjs.io) and [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/) for unit testing and [Cypress](https://www.cypress.io) for end-to-end testing.  
+
+The Cypress tests were actually disabled in the pipeline because they were not passing consistently in the pipeline.
+
+Of course, we could have spent the time fixing the Cypress E2E tests. But instead, we took a step back and looked at the advantages and disadvantages of unit and Cypres E2E tests and asked ourselves is there a better way we can be testing our system.
 
 ## Jest Unit Tests: The Good and the Bad
 
@@ -25,9 +33,9 @@ Cypress E2E tests also take a longer time to run compared to unit tests. These t
 
 ## Integration Tests
 
-So I have good news.  There is a type of test that takes the advantages of both unit and Cypress E2E tests: Cypress Integration tests.  These types of tests were inspired by [Kent Dodd's Testing Trophy](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications).
+So I have good news.  There is a type of test that takes the advantages of both unit and Cypress E2E tests: integration tests.  These types of tests were inspired by [Kent Dodd's Testing Trophy](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications).
 
-These type of tests have the following characteristics:
+Integration tests have the following characteristics:
 
 * Fast
 * Reliable and repeatable
@@ -35,6 +43,7 @@ These type of tests have the following characteristics:
 * Does not require complex mocking
 * Does not know the implementation details of a test
 
+Cypress was used used to implement these integration tests. 
 
 ## Four Key Ingredients
 
@@ -50,7 +59,7 @@ The second key ingredient is setting up code coverage.  This would need to be do
 
 For unit tests, this can be done easily using the [--coverage](https://blog.seriesci.com/how-to-create-code-coverage-for-your-react-app/) option of create-react-app.
 
-For Cypress Integration tests, there is a little more [work](https://docs.cypress.io/guides/tooling/code-coverage) involved but it is possible. 
+For Cypress Integration tests, there is a little more [work](https://docs.cypress.io/guides/tooling/code-coverage) involved but it is possible. First, the code needs to be instrumented 
 
 ### Merging Code Coverage
 ### Checking metrics
