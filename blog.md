@@ -2,7 +2,7 @@
 
 If you are a developer on a React project, I have big news for you:  you can stop writing unit tests.
 
-I worked on a project where we did this.  In this blog, I am going to lead you through the journey that we took to come to this conclusion.
+I worked on a project where we did this.  In this blog, I am going to lead you through the journey that we took to get there.
 
 ## Background
 
@@ -12,7 +12,7 @@ The project was written in React based on [create-react-app](https://create-reac
 
 The Cypress tests were actually disabled in the pipeline because they were not passing consistently in the pipeline.
 
-Of course, we could have spent the time fixing the Cypress E2E tests. But instead, we took a step back and looked at the advantages and disadvantages of unit and Cypres E2E tests and asked ourselves is there a better way we can be testing our system.
+Of course, we could have spent the time fixing the Cypress E2E tests. But instead, we took a step back and looked at the advantages and disadvantages of unit and Cypres E2E tests and asked ourselves is there a better way that we can be testing our system.
 
 ## Jest Unit Tests: The Good and the Bad
 
@@ -43,17 +43,15 @@ Integration tests have the following characteristics:
 * Does not require complex mocking
 * Does not know the implementation details of a test
 
-## Integration Test Implementation
+## Implementation: Cypress
 
+The next step in our journey was *how* to implement the integration tests.  
 
+We first looked at using [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/) as an approach.  With this approach, the tests can target a single component or a more complex component (for example at the page level).  Although this approach was fast and reliable, it did not solve the problem in regards to the complexity involved with mocking.
 
-## Four Key Ingredients
+In the ended, we landed on using [Cypress](https://www.cypress.io) for integration tests.  But we had to use Cypress in a very specific way.  Using the Cypress [intercept](https://docs.cypress.io/api/commands/intercept#Syntax) command was one of the key changes that we implemented.  Using this command, all network requests are intercepted.  If done correctly, the tests should still work even if the host computer is disconnected to the Internet.
 
-There are four key ingredients to get the full value of adding Cypress Integrations test as part of the software development process.  And if done corretly, you can stop writing unit tests.
-
-### #1 Use Cypress intercept
-
-Using the Cypress [intercept](https://docs.cypress.io/api/commands/intercept#Syntax) command is one of the key changes that needs to be used to make a Cypress Integration test.....a Cypress Integration test!  Using this command, all network requests are intercepted.  If done correctly, the tests should still work even if the host computer is disconnected to the Internet.
+## Code Coverage
 
 ### #2 Set up Code Coverage
 
