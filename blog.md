@@ -1,14 +1,14 @@
-# Stop Writing React Unit Tests
+# Stop Writing Unit Tests
 
 If you are a developer on a React project, I have big news for you:  you can stop writing unit tests.
 
-We actually did this on my project and I want to tell you how we did it.
+I worked on a project where we did this.  In this blog, I am going to lead you through the journey that we took to come to this conclusion.
 
 ## Background
 
-To understand the journey that we took to Stop Writing Unit Tests, I want to give some background on the project where we stopped writing unit tests.
+To understand the journey that we took to Stop Writing Unit Tests, I want to give some background on the project where we did this.
 
-The project is written in React based on [create-react-app](https://create-react-app.dev). It uses [Jest](https://jestjs.io) and [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/) for unit testing and [Cypress](https://www.cypress.io) for end-to-end testing.  
+The project was written in React based on [create-react-app](https://create-react-app.dev). It used [Jest](https://jestjs.io) and [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/) for unit testing and [Cypress](https://www.cypress.io) for end-to-end testing.  
 
 The Cypress tests were actually disabled in the pipeline because they were not passing consistently in the pipeline.
 
@@ -43,7 +43,9 @@ Integration tests have the following characteristics:
 * Does not require complex mocking
 * Does not know the implementation details of a test
 
-Cypress was used used to implement these integration tests. 
+## Integration Test Implementation
+
+
 
 ## Four Key Ingredients
 
